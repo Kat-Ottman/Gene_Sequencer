@@ -13,23 +13,6 @@ void ChromosomePair::AnalyzeGenotype()
 {
 }
 
-void ChromosomePair::InputFromFile(ifstream &)
-{
-}
-
-void ChromosomePair::OutputToFile(ofstream &)
-{
-}
-
-void ChromosomePair::AddGene(Gene)
-{
-}
-
-Gene ChromosomePair::FindGene(string name)
-{
-	name = "";
-}
-
 bool ChromosomePair::RunUnitTests()
 {
 }

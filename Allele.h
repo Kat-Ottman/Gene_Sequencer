@@ -20,11 +20,31 @@ class Allele
 		myfile << variantName << variantType << nucleotideSequence << "\n";
 		myfile.close();
 	};
-	void SetNucleotideSequence()
+
+	void SetNucleotideSequence(string givenNucleotideSequence)
 	{
-	}
-	void GetNucleotideSequence();
-	void SetVariantName();
-	void GetVariantName();
+		nucleotideSequence = givenNucleotideSequence;
+	};
+	string GetNucleotideSequence() const
+	{
+		return nucleotideSequence;
+	};
+	void SetVariantName(string givenVariantName)
+	{
+		variantName = givenVariantName;
+	};
+	string GetVariantName() const
+	{
+		return variantName;
+	};
+	void SetVariantType(string givenVariantType)
+	{
+		variantType = givenVariantType;
+	};
+	string GetVariantType() const
+	{
+		return variantType;
+	};
+
 	bool RunUnitTests();
 };
