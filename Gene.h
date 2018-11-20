@@ -24,7 +24,14 @@ class Gene
 	void GetAlleleA();
 	void SetAlleleB();
 	void GetAlleleB();
-	void WriteToFile(ofstream &);
+	void WriteToFile(ofstream &myfile)
+	{
+		myfile.open("Chromosome.txt");
+		myfile << name << traitType;
+		AlleleA.WriteAlleleToFile();
+		AlleleB.WriteAlleleToFile();
+		myfile.close();
+	};
 	Allele GetExpressedTrait();
 	bool RunUnitTests();
 };

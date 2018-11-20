@@ -4,26 +4,22 @@
 
 using namespace std;
 
-void WriteAlleleToFile(ofstream &newOfstream)
+void Allele::SetNucleotideSequence()
 {
 }
 
-void SetNucleotideSequence()
+void Allele::GetNucleotideSequence()
 {
 }
 
-void GetNucleotideSequence()
+void Allele::SetVariantName()
 {
 }
 
-void SetVariantName()
+void Allele::GetVariantName()
 {
 }
 
-void GetVariantName()
-{
-}
-
-bool RunUnitTests()
+bool Allele::RunUnitTests()
 {
 }

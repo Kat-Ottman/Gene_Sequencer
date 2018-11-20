@@ -14,8 +14,15 @@ class Allele
 	Allele();
 	Allele(string, string, string);
 
-	void WriteAlleleToFile(ofstream &);
-	void SetNucleotideSequence();
+	void WriteAlleleToFile(ofstream &myfile)
+	{
+		myfile.open("Chromosome.txt");
+		myfile << variantName << variantType << nucleotideSequence << "\n";
+		myfile.close();
+	};
+	void SetNucleotideSequence()
+	{
+	}
 	void GetNucleotideSequence();
 	void SetVariantName();
 	void GetVariantName();
