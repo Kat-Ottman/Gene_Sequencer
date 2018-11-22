@@ -1,3 +1,4 @@
+#pragma once
 #include <Allele.h>
 #include <iostream>
 #include <fstream>
@@ -13,7 +14,10 @@ class Gene
 	Allele AlleleB;
 
   public: //change void!!!
-	Gene();
+	Gene()
+	{
+		cout << "Gene is being created." << endl;
+	};
 	Gene(Allele, Allele);
 
 	void SetName(string givenName)
@@ -49,26 +53,7 @@ class Gene
 		return AlleleB;
 	};
 
-	void WriteToFile(ofstream &myfile)
-	{
-		myfile.open("Chromosome.txt");
-		myfile << name << traitType;
-		AlleleA.WriteAlleleToFile(myfile);
-		AlleleB.WriteAlleleToFile(myfile);
-		myfile.close();
-	};
-	Allele GetExpressedTrait()
-	{
-		Allele dominantAllele;
-		if (AlleleA.GetVariantType() == "dominant")
-		{
-			dominantAllele = AlleleA;
-		}
-		else if (AlleleB.GetVariantType() == "dominant")
-		{
-			dominantAllele = AlleleB;
-		}
-		return dominantAllele;
-	};
+	void WriteToFile(ofstream &myfile);
+	Allele GetExpressedTrait();
 	bool RunUnitTests();
 };

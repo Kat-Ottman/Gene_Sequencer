@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 
@@ -11,15 +12,13 @@ class Allele
 	string variantType;
 
   public: //change void!!!
-	Allele();
+	Allele()
+	{
+		cout << "Allele is being created." << endl;
+	};
 	Allele(string, string, string);
 
-	void WriteAlleleToFile(ofstream &myfile)
-	{
-		myfile.open("Chromosome.txt");
-		myfile << variantName << variantType << nucleotideSequence << "\n";
-		myfile.close();
-	};
+	void WriteAlleleToFile(ofstream &myfile);
 
 	void SetNucleotideSequence(string givenNucleotideSequence)
 	{
