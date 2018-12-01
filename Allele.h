@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -11,7 +10,7 @@ class Allele
 	string variantName;
 	string variantType;
 
-  public: //change void!!!
+  public:
 	Allele()
 	{
 		cout << "Allele is being created." << endl;
@@ -46,4 +45,6 @@ class Allele
 	};
 
 	bool RunUnitTests();
+
+	bool operator==(Allele rhs);
 };

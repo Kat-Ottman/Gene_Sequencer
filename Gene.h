@@ -1,7 +1,6 @@
 #pragma once
 #include <Allele.h>
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -13,7 +12,7 @@ class Gene
 	Allele AlleleA;
 	Allele AlleleB;
 
-  public: //change void!!!
+  public:
 	Gene()
 	{
 		cout << "Gene is being created." << endl;
@@ -55,5 +54,6 @@ class Gene
 
 	void WriteToFile(ofstream &myfile);
 	Allele GetExpressedTrait();
+	bool operator==(Gene rhs);
 	bool RunUnitTests();
 };

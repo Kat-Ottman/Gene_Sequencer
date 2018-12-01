@@ -5,10 +5,10 @@
 */
 
 #include <iostream>
-#include <Allele.h>
-#include <ChromosomePair.h>
-#include <Gene.h>
-#include <GeneSequencer.h>
+#include "Allele.h"
+#include "ChromosomePair.h"
+#include "Gene.h"
+#include "GeneSequencer.h"
 
 using namespace std;
 
@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
 {
 	Menu();
 
-	// This causes the program to pause at its completion.
 	{
 		char c;
 		cout << "Hit enter to exit:";

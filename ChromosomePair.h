@@ -1,7 +1,6 @@
 #pragma once
 #include <Gene.h>
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
 
@@ -11,6 +10,7 @@ class ChromosomePair
 {
   private:
 	vector<Gene> genes;
+	string myfile;
 
   public:
 	ChromosomePair();
@@ -23,7 +23,8 @@ class ChromosomePair
 	{
 		genes.push_back(givenGene);
 	};
-	Gene FindGene(Gene givenGene);
-	//Chromosome operator + (Chrmosome)
+
+	Gene FindGene(string givenGene);
+	ChromosomePair operator+(ChromosomePair addMe); //select dominant allele from two chromosomes to create a new chromosome (a.operator+(b) = c)
 	bool RunUnitTests();
 };
