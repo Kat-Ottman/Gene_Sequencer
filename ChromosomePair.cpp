@@ -6,11 +6,18 @@
 
 using namespace std;
 
+string ChromosomePair::GetChromosomeName()
+{
+	return ChromosomeName;
+}
+
 ChromosomePair::ChromosomePair()
 {
 	ChromosomePair newChromosomePair;
 
 	int GC;
+	cout << "What is your Chromosome Pair's name?" << endl;
+	cin >> ChromosomeName;
 	cout << "What is your Chromosome Pair's gene count?" << endl;
 	cin >> GC;
 	newChromosomePair.genes.resize(GC);
@@ -51,6 +58,7 @@ ChromosomePair::ChromosomePair()
 
 		Gene g = Gene(newChromosomePair.genes.at(i).GetAlleleA(), newChromosomePair.genes.at(i).GetAlleleB());
 		newChromosomePair.genes.at(i) = g;
+		chromosomes.push_back(newChromosomePair);
 	}
 }
 
@@ -87,8 +95,10 @@ int CountLinesinFile(ifstream &myfile)
 	return numlines;
 }
 
-void ChromosomePair::InputFromFile(ifstream &myfile) //Check if right
+void ChromosomePair::InputFromFile(ifstream &myfile)
 {
+	ChromosomePair c;
+
 	for (int i = 0; i < CountLinesinFile(myfile); i++)
 	{
 		string A1NS;
@@ -99,7 +109,6 @@ void ChromosomePair::InputFromFile(ifstream &myfile) //Check if right
 		string A2VT;
 		string GN;
 		string TT;
-		myfile.open("Chromosome.txt");
 		myfile >> GN;
 		myfile >> TT;
 		myfile >> A1VN;
@@ -108,19 +117,14 @@ void ChromosomePair::InputFromFile(ifstream &myfile) //Check if right
 		myfile >> A2VN;
 		myfile >> A2VT;
 		myfile >> A2NS;
-		for (int i = 0; i < genes.size(); i++)
-		{
-			if (genes.at(i).GetName() == GN)
-			{
-				genes.at(i).SetName(GN);
-				genes.at(i).SetTraitType(TT);
-				genes.at(i).SetAlleleA(Allele(A1NS, A1VN, A1VT));
-				genes.at(i).SetAlleleB(Allele(A2NS, A2VN, A2VT));
-				Gene((genes.at(i).GetAlleleA()), (genes.at(i).GetAlleleB()));
-			}
-		}
+
+		Gene g;
+		g.SetName(GN);
+		g.SetTraitType(TT);
+		g.SetAlleleA(Allele(A1NS, A1VN, A1VT));
+		g.SetAlleleB(Allele(A2NS, A2VN, A2VT));
+		c.AddGene(Gene((g.GetAlleleA()), (g.GetAlleleB())));
 	}
-	myfile.close();
 }
 
 void ChromosomePair::OutputToFile(ofstream &myfile)

@@ -10,14 +10,17 @@ class ChromosomePair
 {
   private:
 	vector<Gene> genes;
-	string myfile;
+	string ChromosomeName;
 
   public:
+	vector<ChromosomePair> chromosomes;
+
 	ChromosomePair();
 
 	void AnalyzeGenotype();
 	void InputFromFile(ifstream &myfile);
 	void OutputToFile(ofstream &myfile);
+	string GetChromosomeName();
 
 	void AddGene(Gene givenGene)
 	{

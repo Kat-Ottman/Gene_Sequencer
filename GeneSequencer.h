@@ -1,7 +1,6 @@
 #pragma once
 #include <ChromosomePair.h>
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -9,9 +8,9 @@ class GeneSequencer
 {
   public:
 	ChromosomePair CreateChromosome();
-	ChromosomePair ImportChromosome();
-	void ExportChromosome();
-	ChromosomePair DoMeiosis(ChromosomePair, ChromosomePair);
+	void ImportChromosome(const string &myfile);
+	void ExportChromosome(ChromosomePair c, const string &myfile);
+	ChromosomePair DoMeiosis(ChromosomePair a, ChromosomePair b);
 	void SequenceChromosomes(ChromosomePair);
 	bool PowerOnSelfTest();
 };
