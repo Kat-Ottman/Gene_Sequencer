@@ -1,5 +1,5 @@
 #pragma once
-#include <Allele.h>
+#include "Allele.h"
 #include <iostream>
 
 using namespace std;
@@ -13,44 +13,17 @@ class Gene
 	Allele AlleleB;
 
   public:
-	Gene()
-	{
-		cout << "Gene is being created." << endl;
-	};
-	Gene(Allele, Allele);
+	Gene();
+	Gene(Allele A1, Allele A2);
 
-	void SetName(string givenName)
-	{
-		name = givenName;
-	};
-	string GetName() const
-	{
-		return name;
-	};
-	void SetTraitType(string givenTraitType)
-	{
-		traitType = givenTraitType;
-	};
-	string GetTraitType() const
-	{
-		return traitType;
-	};
-	void SetAlleleA(Allele givenAlleleA)
-	{
-		AlleleA = givenAlleleA;
-	};
-	Allele GetAlleleA()
-	{
-		return AlleleA;
-	};
-	void SetAlleleB(Allele givenAlleleB)
-	{
-		AlleleB = givenAlleleB;
-	};
-	Allele GetAlleleB()
-	{
-		return AlleleB;
-	};
+	void SetName(string givenName);
+	string GetName() const;
+	void SetTraitType(string givenTraitType);
+	string GetTraitType() const;
+	void SetAlleleA(Allele givenAlleleA);
+	Allele GetAlleleA();
+	void SetAlleleB(Allele givenAlleleB);
+	Allele GetAlleleB();
 
 	void WriteToFile(ofstream &myfile);
 	Allele GetExpressedTrait();

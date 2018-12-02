@@ -11,38 +11,18 @@ class Allele
 	string variantType;
 
   public:
-	Allele()
-	{
-		cout << "Allele is being created." << endl;
-	};
-	Allele(string, string, string);
+	Allele();
+
+	Allele(string NS, string VN, string VT);
 
 	void WriteAlleleToFile(ofstream &myfile);
 
-	void SetNucleotideSequence(string givenNucleotideSequence)
-	{
-		nucleotideSequence = givenNucleotideSequence;
-	};
-	string GetNucleotideSequence() const
-	{
-		return nucleotideSequence;
-	};
-	void SetVariantName(string givenVariantName)
-	{
-		variantName = givenVariantName;
-	};
-	string GetVariantName() const
-	{
-		return variantName;
-	};
-	void SetVariantType(string givenVariantType)
-	{
-		variantType = givenVariantType;
-	};
-	string GetVariantType() const
-	{
-		return variantType;
-	};
+	void SetNucleotideSequence(string givenNucleotideSequence);
+	string GetNucleotideSequence() const;
+	void SetVariantName(string givenVariantName);
+	string GetVariantName() const;
+	void SetVariantType(string givenVariantType);
+	string GetVariantType() const;
 
 	bool RunUnitTests();
 

@@ -9,13 +9,14 @@ ChromosomePair GeneSequencer::CreateChromosome()
 	ChromosomePair();
 }
 
-void GeneSequencer::ImportChromosome(const string &myfile)
+ChromosomePair GeneSequencer::ImportChromosome(const string &myfile)
 {
 	ifstream fileOpen;
 	fileOpen.open("myfile");
 	ChromosomePair c;
 	c.InputFromFile(fileOpen);
 	fileOpen.close();
+	return c;
 }
 
 void GeneSequencer::ExportChromosome(ChromosomePair c, const string &myfile)

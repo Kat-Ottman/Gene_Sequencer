@@ -47,7 +47,7 @@ void Menu()
 			string CName;
 			cout << "What Chromosome would you like to analyze?" << endl;
 			cin >> CName;
-			for (int i = 0; i < cVec.size(); i++)
+			for (size_t i = 0; i < cVec.size(); i++)
 			{
 				if (cVec.at(i).GetChromosomeName() == CName)
 				{
@@ -68,7 +68,7 @@ void Menu()
 			cin >> fileName;
 			cout << "What Chromosome would you like to output?" << endl;
 			cin >> CName;
-			for (int i = 0; i < cVec.size(); i++)
+			for (size_t i = 0; i < cVec.size(); i++)
 			{
 				if (CName == cVec.at(i).GetChromosomeName())
 				{
@@ -86,7 +86,8 @@ void Menu()
 			string fileName;
 			cout << "What file would you like to input a Chromosome from?" << endl;
 			cin >> fileName;
-			g.ImportChromosome(fileName);
+			c = g.ImportChromosome(fileName);
+			cVec.push_back(c);
 		}
 		else if (userChoice == "5")
 		{
@@ -97,7 +98,7 @@ void Menu()
 			ChromosomePair c;
 			cout << "What is the first Chromosome you'd like to combine with?" << endl;
 			cin >> C1;
-			for (int i = 0; i < cVec.size(); i++)
+			for (size_t i = 0; i < cVec.size(); i++)
 			{
 				if (cVec.at(i).GetChromosomeName() == C1)
 				{
@@ -111,7 +112,7 @@ void Menu()
 			cout << "What is the second Chromosome you'd like to combine with?" << endl;
 			cin >> C2;
 
-			for (int i = 0; i < cVec.size(); i++)
+			for (size_t i = 0; i < cVec.size(); i++)
 			{
 				if (cVec.at(i).GetChromosomeName() == C2)
 				{

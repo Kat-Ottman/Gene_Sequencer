@@ -4,6 +4,36 @@
 
 using namespace std;
 
+Allele::Allele()
+{
+	cout << "Allele is being created." << endl;
+}
+
+void Allele::SetNucleotideSequence(string givenNucleotideSequence)
+{
+	nucleotideSequence = givenNucleotideSequence;
+}
+string Allele::GetNucleotideSequence() const
+{
+	return nucleotideSequence;
+}
+void Allele::SetVariantName(string givenVariantName)
+{
+	variantName = givenVariantName;
+}
+string Allele::GetVariantName() const
+{
+	return variantName;
+}
+void Allele::SetVariantType(string givenVariantType)
+{
+	variantType = givenVariantType;
+}
+string Allele::GetVariantType() const
+{
+	return variantType;
+}
+
 bool Allele::RunUnitTests() {}
 
 void Allele::WriteAlleleToFile(ofstream &myfile)

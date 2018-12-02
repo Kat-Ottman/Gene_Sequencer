@@ -1,5 +1,5 @@
 #pragma once
-#include <Gene.h>
+#include "Gene.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,12 +22,8 @@ class ChromosomePair
 	void OutputToFile(ofstream &myfile);
 	string GetChromosomeName();
 
-	void AddGene(Gene givenGene)
-	{
-		genes.push_back(givenGene);
-	};
-
+	void AddGene(Gene givenGene);
 	Gene FindGene(string givenGene);
-	ChromosomePair operator+(ChromosomePair addMe); //select dominant allele from two chromosomes to create a new chromosome (a.operator+(b) = c)
+	ChromosomePair operator+(ChromosomePair addMe);
 	bool RunUnitTests();
 };

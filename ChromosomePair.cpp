@@ -6,6 +6,11 @@
 
 using namespace std;
 
+void ChromosomePair::AddGene(Gene givenGene)
+{
+	genes.push_back(givenGene);
+}
+
 string ChromosomePair::GetChromosomeName()
 {
 	return ChromosomeName;
@@ -22,7 +27,7 @@ ChromosomePair::ChromosomePair()
 	cin >> GC;
 	newChromosomePair.genes.resize(GC);
 
-	for (int i = 0; i < newChromosomePair.genes.size(); i++)
+	for (size_t i = 0; i < newChromosomePair.genes.size(); i++)
 	{
 		string A1NS;
 		string A1VN;
@@ -64,7 +69,7 @@ ChromosomePair::ChromosomePair()
 
 void ChromosomePair::AnalyzeGenotype()
 {
-	for (int i = 0; i <= genes.size(); i++)
+	for (size_t i = 0; i <= genes.size(); i++)
 	{
 		cout << "Gene" << i << endl;
 		cout << "   Name:   " << genes.at(i).GetName() << endl;
@@ -97,7 +102,6 @@ int CountLinesinFile(ifstream &myfile)
 
 void ChromosomePair::InputFromFile(ifstream &myfile)
 {
-	ChromosomePair c;
 
 	for (int i = 0; i < CountLinesinFile(myfile); i++)
 	{
@@ -123,13 +127,13 @@ void ChromosomePair::InputFromFile(ifstream &myfile)
 		g.SetTraitType(TT);
 		g.SetAlleleA(Allele(A1NS, A1VN, A1VT));
 		g.SetAlleleB(Allele(A2NS, A2VN, A2VT));
-		c.AddGene(Gene((g.GetAlleleA()), (g.GetAlleleB())));
+		AddGene(Gene((g.GetAlleleA()), (g.GetAlleleB())));
 	}
 }
 
 void ChromosomePair::OutputToFile(ofstream &myfile)
 {
-	for (int i = 0; i <= genes.size(); i++)
+	for (size_t i = 0; i <= genes.size(); i++)
 	{
 		genes.at(i).WriteToFile(myfile);
 	}
@@ -138,7 +142,7 @@ void ChromosomePair::OutputToFile(ofstream &myfile)
 Gene ChromosomePair::FindGene(string givenGene)
 {
 	Gene match;
-	for (int i = 0; i <= genes.size(); i++)
+	for (size_t i = 0; i <= genes.size(); i++)
 	{
 		string givenName = genes.at(i).GetName();
 		if (givenName == givenGene)
@@ -156,7 +160,7 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 	{
 		if (addMe.genes.size() > this->genes.size())
 		{
-			for (int i = 0; i < this->genes.size(); i++)
+			for (size_t i = 0; i < this->genes.size(); i++)
 			{
 				Gene g = Gene();
 				g.SetAlleleA(this->genes.at(i).GetExpressedTrait());
@@ -166,7 +170,7 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 		}
 		else if (addMe.genes.size() < this->genes.size())
 		{
-			for (int i = 0; i < addMe.genes.size(); i++)
+			for (size_t i = 0; i < addMe.genes.size(); i++)
 			{
 				Gene g = Gene();
 				g.SetAlleleA(this->genes.at(i).GetExpressedTrait());
@@ -177,7 +181,7 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 	}
 	else
 	{
-		for (int i = 0; i < this->genes.size(); i++)
+		for (size_t i = 0; i < this->genes.size(); i++)
 		{
 			Gene g = Gene();
 			g.SetAlleleA(this->genes.at(i).GetExpressedTrait());

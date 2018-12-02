@@ -4,6 +4,43 @@
 
 using namespace std;
 
+Gene::Gene()
+{
+	cout << "Gene is being created." << endl;
+}
+void Gene::SetName(string givenName)
+{
+	name = givenName;
+}
+string Gene::GetName() const
+{
+	return name;
+}
+void Gene::SetTraitType(string givenTraitType)
+{
+	traitType = givenTraitType;
+}
+string Gene::GetTraitType() const
+{
+	return traitType;
+}
+void Gene::SetAlleleA(Allele givenAlleleA)
+{
+	AlleleA = givenAlleleA;
+}
+Allele Gene::GetAlleleA()
+{
+	return AlleleA;
+}
+void Gene::SetAlleleB(Allele givenAlleleB)
+{
+	AlleleB = givenAlleleB;
+}
+Allele Gene::GetAlleleB()
+{
+	return AlleleB;
+}
+
 Gene::Gene(Allele A1, Allele A2)
 {
 	SetAlleleA(A1);
