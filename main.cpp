@@ -14,7 +14,7 @@ using namespace std;
 
 void Menu()
 {
-	string userChoice = "";
+	string userChoice = "0";
 	GeneSequencer g;
 	vector<ChromosomePair> cVec;
 	ChromosomePair c;

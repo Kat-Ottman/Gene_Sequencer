@@ -21,6 +21,7 @@ class ChromosomePair
 	void InputFromFile(ifstream &myfile);
 	void OutputToFile(ofstream &myfile);
 	string GetChromosomeName();
+	void SetChromosomeName(string name);
 
 	void AddGene(Gene givenGene);
 	Gene FindGene(string givenGene);

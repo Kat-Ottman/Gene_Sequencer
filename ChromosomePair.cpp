@@ -16,55 +16,49 @@ string ChromosomePair::GetChromosomeName()
 	return ChromosomeName;
 }
 
+void ChromosomePair::SetChromosomeName(string name)
+{
+	ChromosomeName = name;
+}
+
 ChromosomePair::ChromosomePair()
 {
-	ChromosomePair newChromosomePair;
+	Gene g;
 
-	int GC;
-	cout << "What is your Chromosome Pair's name?" << endl;
-	cin >> ChromosomeName;
-	cout << "What is your Chromosome Pair's gene count?" << endl;
-	cin >> GC;
-	newChromosomePair.genes.resize(GC);
+	string A1NS;
+	string A1VN;
+	string A1VT;
+	string A2NS;
+	string A2VN;
+	string A2VT;
+	string GN;
+	string TT;
 
-	for (size_t i = 0; i < newChromosomePair.genes.size(); i++)
-	{
-		string A1NS;
-		string A1VN;
-		string A1VT;
-		string A2NS;
-		string A2VN;
-		string A2VT;
-		string GN;
-		string TT;
+	cout << "What is the Gene's Name?" << endl;
+	cin >> GN;
+	g.SetName(GN);
+	cout << "What is the Gene's Trait Type?" << endl;
+	cin >> TT;
+	g.SetTraitType(TT);
 
-		cout << "What is the Gene's Name?" << endl;
-		cin >> GN;
-		newChromosomePair.genes.at(i).SetName(GN);
-		cout << "What is the Gene's Trait Type?" << endl;
-		cin >> TT;
-		newChromosomePair.genes.at(i).SetTraitType(TT);
+	cout << "What is Allele A's Variant Name for Gene " << GN << "?" << endl;
+	cin >> A1VN;
+	cout << "What is Allele A's Variant Type for Gene " << GN << "?" << endl;
+	cin >> A1VT;
+	cout << "What is Allele A's Nucleode Sequence for Gene " << GN << "?" << endl;
+	cin >> A1NS;
+	g.SetAlleleA(Allele(A1NS, A1VT, A1VN));
 
-		cout << "What is Allele A's Variant Name for Gene " << GN << "?" << endl;
-		cin >> A1VN;
-		cout << "What is Allele A's Variant Type for Gene " << GN << "?" << endl;
-		cin >> A1VT;
-		cout << "What is Allele A's Nucleode Sequence for Gene " << GN << "?" << endl;
-		cin >> A1NS;
-		newChromosomePair.genes.at(i).SetAlleleA(Allele(A1NS, A1VT, A1VN));
+	cout << "What is Allele B's Variant Name for Gene " << GN << "?" << endl;
+	cin >> A2VN;
+	cout << "What is Allele B's Variant Type for Gene " << GN << "?" << endl;
+	cin >> A2VT;
+	cout << "What is Allele B's Nucleode Sequence for Gene " << GN << "?" << endl;
+	cin >> A2NS;
+	g.SetAlleleB(Allele(A2NS, A2VT, A2VN));
 
-		cout << "What is Allele B's Variant Name for Gene " << GN << "?" << endl;
-		cin >> A2VN;
-		cout << "What is Allele B's Variant Type for Gene " << GN << "?" << endl;
-		cin >> A2VT;
-		cout << "What is Allele B's Nucleode Sequence for Gene " << GN << "?" << endl;
-		cin >> A2NS;
-		newChromosomePair.genes.at(i).SetAlleleB(Allele(A2NS, A2VT, A2VN));
-
-		Gene g = Gene(newChromosomePair.genes.at(i).GetAlleleA(), newChromosomePair.genes.at(i).GetAlleleB());
-		newChromosomePair.genes.at(i) = g;
-		chromosomes.push_back(newChromosomePair);
-	}
+	g = Gene(g.GetAlleleA(), g.GetAlleleB());
+	genes.push_back(g);
 }
 
 void ChromosomePair::AnalyzeGenotype()
