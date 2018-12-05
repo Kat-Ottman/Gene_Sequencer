@@ -52,4 +52,7 @@ void GeneSequencer::SequenceChromosomes(ChromosomePair c) //Using ChromosomePair
 
 bool GeneSequencer::PowerOnSelfTest() //Tests all variables and functions in GeneSequencer class for functionality
 {
+	ChromosomePair c;
+	bool isOkay = c.RunUnitTests();
+	return isOkay;
 }

@@ -17,10 +17,10 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 	string userChoice = "0";
 	GeneSequencer g;
 	vector<ChromosomePair> cVec;
-	ChromosomePair c;
 
 	while (userChoice != "6") //While-loop continues if user does not want to exit program
 	{
+
 		cout << "Welcome to the Gene Sequencer! Please enter a number choice."
 			 << "\n"
 			 << "1 - Create Chromosome"
@@ -39,8 +39,7 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 
 		if (userChoice == "1") //Create Chromosome
 		{
-			c = g.CreateChromosome();
-			cVec.push_back(c);
+			cVec.push_back(g.CreateChromosome());
 		}
 		else if (userChoice == "2") //Analyze Chromosome
 		{
@@ -51,8 +50,7 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 			{
 				if (cVec.at(i).GetChromosomeName() == CName)
 				{
-					c = cVec.at(i);
-					g.SequenceChromosomes(c);
+					g.SequenceChromosomes(cVec.at(i));
 				}
 				else
 				{
@@ -72,8 +70,7 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 			{
 				if (CName == cVec.at(i).GetChromosomeName())
 				{
-					c = cVec.at(i);
-					g.ExportChromosome(c, fileName);
+					g.ExportChromosome(cVec.at(i), fileName);
 				}
 				else
 				{
@@ -86,8 +83,7 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 			string fileName;
 			cout << "What file would you like to input a Chromosome from?" << endl;
 			cin >> fileName;
-			c = g.ImportChromosome(fileName);
-			cVec.push_back(c);
+			cVec.push_back(g.ImportChromosome(fileName));
 		}
 		else if (userChoice == "5") //Combine Chromosomes
 		{
@@ -124,8 +120,7 @@ void Menu() //Goes through options for user and implements functions in GeneSequ
 				}
 			}
 
-			c = a + b;
-			cVec.push_back(c);
+			cVec.push_back(a + b);
 
 			cout << "Your new Chromosme has been created and added to your known Chromosomes." << endl;
 		}

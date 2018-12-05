@@ -70,10 +70,6 @@ Allele Gene::GetExpressedTrait() //Checks Variant Type of Alleles in a Gene to s
 	return dominantAllele;
 }
 
-bool Gene::RunUnitTests() //Checks all variables and functions in Gene class for functionality
-{
-}
-
 bool Gene::operator==(Gene rhs) //Overloads operator== for use in ChromosomePair::FindGene()
 {
 	bool isMatch = false;
@@ -91,4 +87,27 @@ bool Gene::operator==(Gene rhs) //Overloads operator== for use in ChromosomePair
 		}
 	}
 	return isMatch;
+}
+
+bool Gene::RunUnitTests() //Checks all variables and functions in Gene class for functionality
+{
+	Gene g;
+	Allele a;
+	bool isOkay = a.RunUnitTests();
+
+	g.SetName("U567");
+	if (g.GetName() != "U567")
+	{
+		cout << "FAILED set/get Gene Name." << endl;
+		isOkay = false;
+	}
+
+	g.SetTraitType("Hair Color");
+	if (g.GetTraitType() != "Hair Color")
+	{
+		cout << "FAILED set/get Gene Trait Type." << endl;
+		isOkay = false;
+	}
+
+	return isOkay;
 }

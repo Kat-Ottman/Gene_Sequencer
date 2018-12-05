@@ -74,28 +74,28 @@ bool Allele::RunUnitTests()
 
 	cout << "Beginning Allele Tests" << endl;
 
-	a.SetNucleotideSequence("ABCDFG");
+	a.SetNucleotideSequence("ABCDFG"); //Testing Setter and Getter for Nucleotide Sequence
 	if (a.GetNucleotideSequence() != "ABCDFG")
 	{
 		cout << "FAILED set/get Nucleotide Sequence." << endl;
 		isOkay = false;
 	}
 
-	a.SetVariantName("blonde");
+	a.SetVariantName("blonde"); //Testing Setter and Getter for Variant Name
 	if (a.GetVariantName() != "blonde")
 	{
 		cout << "FAILED set/get Variant Name." << endl;
 		isOkay = false;
 	}
 
-	a.SetVariantType("dominant");
+	a.SetVariantType("dominant"); //Testing Setter and Getter for Variant Type
 	if (a.GetVariantType() != "blonde")
 	{
 		cout << "FAILED set/get Variant Type." << endl;
 		isOkay = false;
 	}
 
-	b.SetNucleotideSequence("ABCDFG");
+	b.SetNucleotideSequence("ABCDFG"); //Testing operator== overload
 	b.SetVariantName("blonde");
 	b.SetVariantType("dominant");
 	if (a == b)
@@ -105,6 +105,24 @@ bool Allele::RunUnitTests()
 	else
 	{
 		cout << "FAILED overloaded operator==" << endl;
+		isOkay = false;
+	}
+
+	string vn; //Testing WriteAlleleToFile()
+	string vt;
+	string ns;
+	ofstream of;
+	of.open("file.txt");
+	a.WriteAlleleToFile(of);
+	of.close();
+	ifstream ifs;
+	ifs.open("file.txt");
+	ifs >> vn;
+	ifs >> vt;
+	ifs >> ns;
+	if ((vn != "blonde") && (vn != "dominant") && (ns != "ABCDFG"))
+	{
+		cout << "FAILED writing allele to file." << endl;
 		isOkay = false;
 	}
 

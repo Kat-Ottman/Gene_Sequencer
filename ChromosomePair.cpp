@@ -192,4 +192,7 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe) //Overloads opera
 
 bool ChromosomePair::RunUnitTests()
 {
+	Gene g;
+	bool isOkay = g.RunUnitTests();
+	return isOkay;
 }
