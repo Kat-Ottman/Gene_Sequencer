@@ -5,6 +5,7 @@
 */
 
 #include <iostream>
+#include <vector>
 #include "Allele.h"
 #include "Gene.h"
 #include "ChromosomePair.h"
