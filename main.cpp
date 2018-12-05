@@ -12,14 +12,14 @@
 
 using namespace std;
 
-void Menu()
+void Menu() //Goes through options for user and implements functions in GeneSequencer based on user choice
 {
 	string userChoice = "0";
 	GeneSequencer g;
 	vector<ChromosomePair> cVec;
 	ChromosomePair c;
 
-	while (userChoice != "6")
+	while (userChoice != "6") //While-loop continues if user does not want to exit program
 	{
 		cout << "Welcome to the Gene Sequencer! Please enter a number choice."
 			 << "\n"
@@ -37,12 +37,12 @@ void Menu()
 
 		cin >> userChoice;
 
-		if (userChoice == "1")
+		if (userChoice == "1") //Create Chromosome
 		{
 			c = g.CreateChromosome();
 			cVec.push_back(c);
 		}
-		else if (userChoice == "2")
+		else if (userChoice == "2") //Analyze Chromosome
 		{
 			string CName;
 			cout << "What Chromosome would you like to analyze?" << endl;
@@ -60,7 +60,7 @@ void Menu()
 				}
 			}
 		}
-		else if (userChoice == "3")
+		else if (userChoice == "3") //Output Chromosome to File
 		{
 			string fileName;
 			string CName;
@@ -81,7 +81,7 @@ void Menu()
 				}
 			}
 		}
-		else if (userChoice == "4")
+		else if (userChoice == "4") //Input Chromosome From File
 		{
 			string fileName;
 			cout << "What file would you like to input a Chromosome from?" << endl;
@@ -89,7 +89,7 @@ void Menu()
 			c = g.ImportChromosome(fileName);
 			cVec.push_back(c);
 		}
-		else if (userChoice == "5")
+		else if (userChoice == "5") //Combine Chromosomes
 		{
 			string C1;
 			string C2;
@@ -130,6 +130,7 @@ void Menu()
 			cout << "Your new Chromosme has been created and added to your known Chromosomes." << endl;
 		}
 	}
+	cout << "Thank you for using this program!" << endl; //Exit
 }
 
 int main(int argc, char *argv[])

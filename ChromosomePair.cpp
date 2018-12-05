@@ -6,22 +6,22 @@
 
 using namespace std;
 
-void ChromosomePair::AddGene(Gene givenGene)
+void ChromosomePair::AddGene(Gene givenGene) //Takes given gene and creates a new position for it in genes vector
 {
 	genes.push_back(givenGene);
 }
 
-string ChromosomePair::GetChromosomeName()
+string ChromosomePair::GetChromosomeName() //Returns string in Chromosome Name
 {
 	return ChromosomeName;
 }
 
-void ChromosomePair::SetChromosomeName(string name)
+void ChromosomePair::SetChromosomeName(string name) ////Takes given string and assigns it to Chromosome Name
 {
 	ChromosomeName = name;
 }
 
-ChromosomePair::ChromosomePair()
+ChromosomePair::ChromosomePair() //ChromsomePair Constructor that creates all variables under a Gene and adds to this->genes
 {
 	Gene g;
 
@@ -58,10 +58,10 @@ ChromosomePair::ChromosomePair()
 	g.SetAlleleB(Allele(A2NS, A2VT, A2VN));
 
 	g = Gene(g.GetAlleleA(), g.GetAlleleB());
-	genes.push_back(g);
+	AddGene(g);
 }
 
-void ChromosomePair::AnalyzeGenotype()
+void ChromosomePair::AnalyzeGenotype() //Prints out specific information about a Gene including it's "dominant" trait
 {
 	for (size_t i = 0; i <= genes.size(); i++)
 	{
@@ -83,7 +83,7 @@ void ChromosomePair::AnalyzeGenotype()
 	}
 }
 
-int CountLinesinFile(ifstream &myfile)
+int CountLinesinFile(ifstream &myfile) //Reads the amount of lines that are in a given file
 {
 	int numlines = 0;
 	string line;
@@ -94,7 +94,7 @@ int CountLinesinFile(ifstream &myfile)
 	return numlines;
 }
 
-void ChromosomePair::InputFromFile(ifstream &myfile)
+void ChromosomePair::InputFromFile(ifstream &myfile) //Creates a new Gene type variable for each line in a file and adds it to this->genes
 {
 
 	for (int i = 0; i < CountLinesinFile(myfile); i++)
@@ -125,7 +125,7 @@ void ChromosomePair::InputFromFile(ifstream &myfile)
 	}
 }
 
-void ChromosomePair::OutputToFile(ofstream &myfile)
+void ChromosomePair::OutputToFile(ofstream &myfile) //Uses Gene::WriteToFile() for each Gene in genes with the given file
 {
 	for (size_t i = 0; i <= genes.size(); i++)
 	{
@@ -133,7 +133,7 @@ void ChromosomePair::OutputToFile(ofstream &myfile)
 	}
 }
 
-Gene ChromosomePair::FindGene(string givenGene)
+Gene ChromosomePair::FindGene(string givenGene) //Compares the given string to the Names of each Gene in genes
 {
 	Gene match;
 	for (size_t i = 0; i <= genes.size(); i++)
@@ -147,7 +147,7 @@ Gene ChromosomePair::FindGene(string givenGene)
 	return match;
 }
 
-ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
+ChromosomePair ChromosomePair::operator+(ChromosomePair addMe) //Overloads operator+ to create a new ChromosomePair with a genes vector of Genes made from dominant Alleles
 {
 	ChromosomePair newChromosomePair;
 	if (addMe.genes.size() != this->genes.size())
@@ -156,9 +156,10 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 		{
 			for (size_t i = 0; i < this->genes.size(); i++)
 			{
-				Gene g = Gene();
+				Gene g;
 				g.SetAlleleA(this->genes.at(i).GetExpressedTrait());
 				g.SetAlleleB(addMe.genes.at(i).GetExpressedTrait());
+				g = Gene(g.GetAlleleA(), g.GetAlleleB());
 				newChromosomePair.AddGene(g);
 			}
 		}
@@ -166,9 +167,10 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 		{
 			for (size_t i = 0; i < addMe.genes.size(); i++)
 			{
-				Gene g = Gene();
+				Gene g;
 				g.SetAlleleA(this->genes.at(i).GetExpressedTrait());
 				g.SetAlleleB(addMe.genes.at(i).GetExpressedTrait());
+				g = Gene(g.GetAlleleA(), g.GetAlleleB());
 				newChromosomePair.AddGene(g);
 			}
 		}
@@ -177,9 +179,10 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair addMe)
 	{
 		for (size_t i = 0; i < this->genes.size(); i++)
 		{
-			Gene g = Gene();
+			Gene g;
 			g.SetAlleleA(this->genes.at(i).GetExpressedTrait());
 			g.SetAlleleB(addMe.genes.at(i).GetExpressedTrait());
+			g = Gene(g.GetAlleleA(), g.GetAlleleB());
 			newChromosomePair.AddGene(g);
 		}
 	}

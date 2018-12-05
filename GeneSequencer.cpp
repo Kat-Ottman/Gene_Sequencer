@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ChromosomePair GeneSequencer::CreateChromosome()
+ChromosomePair GeneSequencer::CreateChromosome() //Using ChromosomePair::ChromosomePair(), creates a new Chromsome with a new genes vector
 {
 	ChromosomePair c;
 	string CName;
@@ -18,9 +18,10 @@ ChromosomePair GeneSequencer::CreateChromosome()
 	{
 		ChromosomePair();
 	}
+	return c;
 }
 
-ChromosomePair GeneSequencer::ImportChromosome(const string &myfile)
+ChromosomePair GeneSequencer::ImportChromosome(const string &myfile) //Creates a new Chromosome based on the Genes found i the given file
 {
 	ifstream fileOpen;
 	fileOpen.open("myfile");
@@ -30,7 +31,7 @@ ChromosomePair GeneSequencer::ImportChromosome(const string &myfile)
 	return c;
 }
 
-void GeneSequencer::ExportChromosome(ChromosomePair c, const string &myfile)
+void GeneSequencer::ExportChromosome(ChromosomePair c, const string &myfile) //Takes given ChromosomePair and writes it to the given file
 {
 	ofstream fileOpen;
 	fileOpen.open("myfile");
@@ -38,17 +39,17 @@ void GeneSequencer::ExportChromosome(ChromosomePair c, const string &myfile)
 	fileOpen.close();
 }
 
-ChromosomePair GeneSequencer::DoMeiosis(ChromosomePair a, ChromosomePair b)
+ChromosomePair GeneSequencer::DoMeiosis(ChromosomePair a, ChromosomePair b) //Using ChromosomePair::operator==(), adds ChromosomePairs a and b into ChromosomePair c
 {
 	ChromosomePair c = (a + b);
 	return c;
 }
 
-void GeneSequencer::SequenceChromosomes(ChromosomePair c)
+void GeneSequencer::SequenceChromosomes(ChromosomePair c) //Using ChromosomePair::AnalyzeGenotype() on given ChromosomePair
 {
 	c.AnalyzeGenotype();
 }
 
-bool GeneSequencer::PowerOnSelfTest()
+bool GeneSequencer::PowerOnSelfTest() //Tests all variables and functions in GeneSequencer class for functionality
 {
 }
